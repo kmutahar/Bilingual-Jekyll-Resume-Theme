@@ -1,1 +1,42 @@
-{{ content }}
+<!DOCTYPE html>
+<html lang="en">
+    {%- comment -%}
+    <!-- Layout: Default wrapper used by most pages.
+         - Purpose: Provide shared head includes, analytics, page content slot, and footer.
+         - Notes: Keep Liquid tags (e.g., {% seo %}) intact to avoid breaking Jekyll rendering.
+    -->
+    {%- endcomment -%}
+    <!-- This page was last updated on {{ "now" | date: "%Y-%m-%d %H:%M:%S" }}Z -->
+
+    <head>
+        <!-- Shared meta tags, charset, viewport, and favicons -->
+        {% include shared-head.html %}
+
+        <!-- Main head assets (CSS, theme files) -->
+        {% include main-head.html %}
+
+        <!-- SEO plugin output: title, meta, Open Graph, canonical -->
+        {% seo %}
+
+        <!-- Analytics head snippet (GTM or gtag). Configured in _config.yml -->
+        {% include analytics-head.html %}
+
+        <!-- rel="me" for Mastodon verification / IndieAuth -->
+        <link rel="me" href="{{ site.social_links.mastodon }}">
+    </head>
+
+    <body>
+        <!-- Analytics body snippet (noscript, dataLayer, etc.) -->
+        {% include analytics-body.html %}
+
+        <!-- Main content injected by Jekyll pages/layouts -->
+        {{ content }}
+
+        <!-- Footer: site title and copyright range -->
+        <footer>
+            <p class="copyright">
+                {{ site.title }} &copy; 2018 - {{ "now" | date: "%Y" }}
+            </p>
+        </footer>
+    </body>
+</html>

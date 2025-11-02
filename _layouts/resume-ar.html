@@ -1,0 +1,167 @@
+{% assign data_path_string = site.active_resume_path_ar %}
+
+{% if data_path_string == "" or data_path_string == nil %}
+    {% assign resume_data = site.data %}
+{% else %}
+    {% assign path_parts = data_path_string | split: '.' %}
+    {% assign data_object = site.data %}
+    {% for part in path_parts %}
+        {% assign data_object = data_object[part] %}
+    {% endfor %}
+    {% assign resume_data = data_object %}
+{% endif %}
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+    <!-- هذه الصفحة تم تحديثها آخر مرة في {{ "now" | date: "%Y-%m-%d %H:%M:%S" }}Z -->
+
+    <head>
+        {% include shared-head.html %}
+
+        {% include resume-head-ar.html %}
+
+        {% seo %}
+
+        {% include analytics-head.html %}
+    </head>
+
+    <body class="theme-{% if site.resume_theme %}{{ site.resume_theme }}{% endif %}">
+
+        <div class="wrapper" itemscope itemtype="http://schema.org/Person">
+            <meta itemprop="telephone" content="{{ site.contact_info.phone }}" />
+            <meta itemprop="address" content="{{ site.contact_info.address }}" />
+
+            <header class="page-header">
+
+                {% if site.resume_avatar == true %}
+                    <!-- You can turn off the avatar in _config.yml by setting to false -->
+                    <a href="{{ '/'  | relative_url }}" title="الصفحة الرئيسية" target="_blank" rel="noopener">
+                        <img src="{{ '/assets/images/Profile-min.jpg' | relative_url }}" alt="صورتي" class="avatar no-print" itemprop="image">
+                    </a>
+                {% endif %}
+
+                <!-- Your name is defined in the _config.yml file -->
+                <h1 class="header-name" itemprop="name">
+                    {{ site.name.first }} {{ site.name.middle }} {{ site.name.last }}
+                </h1>
+
+                {% if site.display_header_contact_info == true %}
+                    <!-- To display contact info here, change `display_header_contact_info` value in _config.yml to true -->
+                    <div class="header-contact-info">
+                        <p>
+                            {% if site.enable_live == true %}
+                                {% if site.contact_info.phone_live %}
+                                    <a href="tel:{{ site.contact_info.phone_live | remove: ' ' }}" dir="ltr" style="text-decoration: none; color: inherit;">{{ site.contact_info.phone_live }}</a>&nbsp;{% include vendors/lineicons-v4.0/phone.svg %}
+                                {% endif %}
+                            {% else %}
+                                {% if site.contact_info.phone %}
+                                    <a href="tel:{{ site.contact_info.phone_live | remove: ' ' }}" dir="ltr" style="text-decoration: none; color: inherit;">{{ site.contact_info.phone }}</a>&nbsp;{% include vendors/lineicons-v4.0/phone.svg %}
+                                {% endif %}
+                            {% endif %}
+
+                            {% if site.enable_live == true %}
+                                {% if site.contact_info.email_live %}
+                                    &nbsp;&nbsp;{{ site.contact_info.email_live }}&nbsp;{% include vendors/lineicons-v4.0/envelope.svg %}
+                                {% endif %}
+                            {% else %}
+                                {% if site.contact_info.email %}
+                                    &nbsp;&nbsp;{{ site.contact_info.email }}&nbsp;{% include vendors/lineicons-v4.0/envelope.svg %}
+                                {% endif %}
+                            {% endif %}
+
+                            {% if site.contact_info.address_ar %}
+                                &nbsp;&nbsp;{{ site.contact_info.address_ar }}&nbsp;{% include vendors/lineicons-v4.0/postcard.svg %}
+                            {% endif %}
+
+                            {% if site.contact_info.dob %}
+                                &nbsp;&nbsp;تاريخ الميلاد:&nbsp;{{ site.contact_info.dob | date_to_long_string }}
+                            {% endif %}
+
+                            {% assign active_languages = resume_data.languages | where: "active", true %}
+                            {% if site.resume_section.lang_header and active_languages.size > 0 %}
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <span style="white-space: nowrap;">
+                                    <strong>اللغات:</strong>
+                                    {% for lang in active_languages %}
+                                        {{ lang.language }} ({{ lang.descrp_short }}){% unless forloop.last %}، {% endunless %}
+                                    {% endfor %}
+                                </span>
+                            {% endif %}
+                        </p>
+                    </div>
+                {% endif %}
+
+                <div class="title-bar no-print">
+                    <!-- Your title is also defined in the _config.yml file -->
+                    <h2 class="header-title" itemprop="jobTitle">{{ site.resume_title_ar }}</h2>
+
+                    <!-- This is the markup for the icon links; moved out to an include because it's very verbose, and you shouldn't ever need to edit the markup (unless you want to re-order the icons); if you want to customize which links appear, define them in the _config.yml file -->
+                    {% if site.social_links %}
+                    <!-- and guess where these are defined? Yup, you guessed it: the _config.yml file -->
+                        <ul class="social-links">
+                            {% include social-links.html %}
+                        </ul>
+                    {% endif %}
+                </div>
+
+                <div class="executive-summary" itemprop="description">
+                    {{ site.resume_header_intro }}
+                </div>
+
+                {% if site.resume_looking_for_work == true %}
+                    <a href="mailto:{{ site.contact_info.email }}" class="contact-button no-print" itemprop="email">تواصل معي</a>
+                {% elsif site.resume_looking_for_work == false %}
+                    <a class="contact-button not-looking no-print">لستُ باحثاً عن عمل حالياً.</a>
+                {% else %}
+                {% endif %}
+            </header>
+
+            {% comment %}
+            =============================================================================
+              DYNAMIC SECTION RENDERING (ARABIC)
+            =============================================================================
+              Loop through resume_section_order from _config.yml and render each section
+              with Arabic labels and "حتى الآن" for Present.
+            {% endcomment %}
+            {%- for section_name in site.resume_section_order -%}
+                {% include resume-section-ar.html section_name=section_name %}
+            {%- endfor -%}
+
+            {% if site.resume_print_social_links %}
+                <!-- begin Print Social Links -->
+                <section class="content-section print-only">
+
+                    <header class="section-header">
+                        <h2>روابط التواصل</h2>
+                    </header>
+
+                    <div class="resume-item">
+                        {% include print-social-links.html %}
+                    </div>
+
+                </section>
+                <!-- end Print Social Links -->
+            {% endif %}
+
+            <footer class="page-footer no-print">
+                <p class="footer-line">
+                    تم إنشاء هذه الصفحة بتاريخ {{ "now" | date: "%Y-%m-%d" }} في {{ "now" | date: "%H:%M:%S" }}Z.
+                </p>
+                <p class="copyright">{{ site.title }} &copy; 2018 - {{ "now" | date: "%Y" }}</p>
+            </footer>
+
+            {% if site.enable_live == false %}
+                <footer class="page-footer print-only">
+                    <p class="footer-line">
+                        تم إنشاء هذه السيرة الذاتية بتاريخ {{ "now" | date: "%Y-%m-%d" }} في {{ "now" | date: "%H:%M:%S" }}Z.
+                        <br>
+                        <a href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}" target="_blank" rel="noopener noreferrer" style="font-weight: 100; color: #999;">
+                            {{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}
+                        </a>
+                    </p>
+                </footer>
+            {% endif %}
+        </div>
+
+    </body>
+</html>
