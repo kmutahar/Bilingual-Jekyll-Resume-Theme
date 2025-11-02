@@ -1,0 +1,69 @@
+// RTL and Arabic typography overrides for the resume layout
+// ---------------------------------------/
+
+@use "mixins";
+
+html[dir="rtl"] {
+  body {
+    direction: rtl;
+    font-family: 'Cairo', 'Noto Naskh Arabic', Tahoma, Arial, sans-serif;
+  }
+
+  // Headings and common typographic elements
+  .section-header h2,
+  .page-header .header-name,
+  .page-header .header-title,
+  .content-section .resume-item-title,
+  .content-section .resume-item-details,
+  .content-section .resume-item-copy {
+    font-family: 'Cairo', 'Noto Naskh Arabic', Tahoma, Arial, sans-serif;
+  }
+
+  // Global alignment defaults
+  .content-section,
+  .content-section .resume-item-title,
+  .content-section .resume-item-details,
+  .content-section .resume-item-copy {
+    text-align: right;
+  }
+
+  // Header tweaks
+  .page-header {
+    .title-bar {
+      .header-title {
+        @include mixins.media_larger_than_mobile {
+          float: right;
+        }
+      }
+    }
+  }
+
+  // Social links on the opposite side in wide viewports
+  .social-links {
+    @include mixins.media_larger_than_mobile {
+      float: left;
+    }
+
+    .icon-link-item {
+      // flip spacing for RTL
+      margin-right: 5px;
+      margin-left: 0;
+    }
+  }
+
+  // Lists
+  .resume-item-list {
+    padding-right: 1.2rem;
+    padding-left: 0;
+  }
+
+  // Languages table tweaks
+  .languages-table {
+    direction: rtl;
+  }
+
+  // Footer alignment
+  .page-footer {
+    text-align: center; // keep centered
+  }
+}

@@ -1,0 +1,51 @@
+/* SVG Icons */
+
+.svg-icon,
+svg {
+  fill: #BBB;
+  width: 30px;
+}
+
+.svg-icon:hover,
+svg:hover {
+  fill: #000;
+}
+
+/* Following only apply to the resume header contact info icons */
+.header-contact-info>p>svg {
+  width: 20px;
+  fill: #000;
+  vertical-align: middle;
+}
+
+
+/* Footer */
+
+/* Old
+footer {
+    color: rgba(0, 0, 0, 1);
+    width: 100%;
+    margin: 50px auto;
+    text-align: center;
+    flex: none;
+}
+*/
+
+footer,
+.page-footer {
+  padding-top: 1.5rem;
+  text-align: center;
+  margin-bottom: 3rem;
+
+  .footer-line,
+  .copyright {
+    margin: 0;
+    font-size: .875rem;
+    color: #999;
+
+    >a {
+      font-weight: 700;
+      color: #333;
+    }
+  }
+}
