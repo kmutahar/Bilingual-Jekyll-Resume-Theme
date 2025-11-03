@@ -1,0 +1,167 @@
+# ==============================================================================
+# SITE IDENTITY & BASIC INFO (Required - customize these first)
+# ==============================================================================
+theme: bilingual-jekyll-resume-theme
+title: "Your Full Name"
+description: >- # this means to ignore newlines until "next key"
+  A brief description of your site or professional tagline
+url: "https://your-domain.com" # Your site's URL the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "" # Leave empty unless using a subdirectory
+timezone: UTC # Your timezone
+
+# ==============================================================================
+# PERSONAL INFORMATION (Required - your name and titles)
+# ==============================================================================
+name:
+  first: "Your"
+  middle: "Middle"
+  last: "Lastname"
+
+resume_title: "Your Job Title" # English job title
+resume_title_ar: "مسماك الوظيفي" # Arabic job title (optional if not using Arabic)
+
+# ==============================================================================
+# CONTACT INFORMATION (Required - at least email)
+# ==============================================================================
+contact_info:
+  email: "your.email@example.com"
+  phone: "+1 555 555 5555" # Optional
+  address: "Your City, Country" # Optional
+  address_ar: "مدينتك، دولتك" # Optional Arabic address
+  # Advanced: separate live contact info (shown when enable_live: true)
+  email_live: "live@example.com" # Optional
+  phone_live: "+1 555 000 0000" # Optional
+  # dob: 1990-01-01 # Optional date of birth
+
+# ==============================================================================
+# SOCIAL LINKS (Optional - only add the ones you use using full URLs)
+# ==============================================================================
+social_links:
+  github: https://github.com/yourusername
+  linkedin: https://www.linkedin.com/in/yourhandle/
+  # Add any of these you use (leave others commented or remove):
+  # twitter: https://twitter.com/yourhandle
+  # telegram: https://t.me/yourhandle
+  # medium: https://medium.com/@yourhandle
+  # website: https://yourwebsite.com
+  # whatsapp: https://wa.me/1234567890
+  # instagram: https://instagram.com/yourhandle
+  # facebook: https://facebook.com/yourhandle
+  # youtube: https://youtube.com/@yourhandle
+  # devto: https://dev.to/yourhandle
+  # dribbble: https://dribbble.com/yourhandle
+  # flickr: https://flickr.com/people/yourhandle
+  # pinterest: https://pinterest.com/yourhandle
+  # mastodon: https://mastodon.social/@yourhandle
+
+# ==============================================================================
+# RESUME CONTENT SETTINGS (Configure what shows on your resume)
+# ==============================================================================
+
+# Data source configuration (set to your _data path without prefix using dots as separators)
+# The active resume data path to use.
+# Enter the full path using dots as separators, without the _data/ prefix and without the .yml file names at the end.
+active_resume_path_en: "en" # Path to English data (empty = root _data/)
+active_resume_path_ar: "ar" # ath to Arabic data (empty = root _data/)
+
+# Header and intro
+resume_avatar: true # Show profile picture
+display_header_contact_info: true # Show contact info in header
+resume_header_intro: "<p>Your professional summary or elevator pitch goes here.</p>"
+
+# Job search status
+# use "true" to display the email contact button,
+# "false" to display an "I'm not looking for work" message,
+# or remove the resume_looking_for_work option entirely
+# to leave blank
+resume_looking_for_work: true # true = show contact button, false = "not looking", remove = blank
+
+# Section toggles
+resume_section: # Optional sections (set to true to include):
+  associations: true
+  certifications: true
+  courses: true
+  education: true
+  experience: true
+  interests: false
+  lang_header: true # Show languages in header instead of separate section
+  languages: false
+  links: false
+  projects: true
+  recognition: false
+  skills: false
+  volunteering: true
+
+# Section display order
+# Order in which resume sections appear
+# List the section names in the order you want them to render.
+# Only sections with resume_section.<name>: true will actually display.
+# Available sections: experience, education, certifications, courses, volunteering, 
+#                     projects, skills, recognition, associations, interests, languages, links
+resume_section_order:
+  - experience
+  - education
+  - certifications
+  - courses
+  - volunteering
+  - projects
+  - associations
+  - skills
+  - recognition
+  - languages
+  - interests
+  - links
+
+# ==============================================================================
+# ADVANCED SETTINGS (Usually don't need to change these)
+# ==============================================================================
+
+# Resume behavior
+enable_summary: false # Show role/course summaries when available
+enable_live: false # Use "live" contact info vs regular contact info
+resume_print_social_links: true # Include social links on printed version
+
+# Design
+authors: [] # optional
+resume_theme: default # Theme variant (currently only "default")
+
+# Analytics (optional - choose one)
+analytics:
+  # Google Tag Manager (recommended):
+  # gtm: GTM-XXXXXXX
+  # OR Google Analytics 4:
+  # ga: true
+  # gtag: G-XXXXXXXXXX
+
+# ==============================================================================
+# JEKYLL BUILD SETTINGS (Advanced users only)
+# ==============================================================================
+
+# Required plugins
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-redirect-from
+
+# File processing
+include:
+  - _redirects
+  - .well-known/
+  - _pages/
+  - _posts/
+
+exclude:
+  - scratch.md
+  - README.md
+  - Gemfile*
+  - vendor/
+  - node_modules/
+  - "*.gemspec"
+  - netlify.toml
+  - vercel.json
+  - WARP.md
+  - scripts/
+
+# Page defaults
+defaults: []
