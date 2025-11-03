@@ -69,6 +69,7 @@ That’s enough to render a working resume using data from `_data/`.
 - url: Full site URL (protocol + host). Used for SEO and absolute links.
 - title: Site title (footer and SEO).
 - name.first, name.last: Appears in the header (`middle` is optional).
+  - use `name_ar.` for arabic version of name
 - resume_title: English job title shown in header.
 - contact_info.email: Needed if `resume_looking_for_work: true` (for the contact button).
 
@@ -206,6 +207,10 @@ name:
   first: Jane
   middle: Q.
   last: Doe
+name_ar:
+  first:
+  middle:
+  last:
 resume_title: Senior Product Manager
 resume_title_ar: مديرة منتج أولى
 

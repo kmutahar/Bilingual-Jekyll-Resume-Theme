@@ -17,6 +17,11 @@ name:
   middle: "Middle"
   last: "Lastname"
 
+name_ar: # Arabic name (optional if not using Arabic)
+  first: "Your"
+  middle: "Middle"
+  last: "Lastname"
+
 resume_title: "Your Job Title" # English job title
 resume_title_ar: "مسماك الوظيفي" # Arabic job title (optional if not using Arabic)
 

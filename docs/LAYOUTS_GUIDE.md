@@ -140,7 +140,7 @@ active_resume_path: 2025-06.20250621-PM
 
 ### 2) Header
 - Optional avatar (toggle via `site.resume_avatar`)
-- Name from `site.name.first|middle|last`
+- Name from `site.name.first|middle|last` and/or `site.name_ar.first|middle|last`
 - Optional contact row (`site.display_header_contact_info`) showing phone/email/address and DoB
   - When `site.enable_live` is true, uses `phone_live` and `email_live`; otherwise `phone` and `email`
   - Small inline icons are included from `vendors/lineicons-v4.0/`
