@@ -21,8 +21,10 @@
         <!-- Analytics head snippet (GTM or gtag). Configured in _config.yml -->
         {% include analytics-head.html %}
 
+        {% if site.social_links.mastodon %}
         <!-- rel="me" for Mastodon verification / IndieAuth -->
         <link rel="me" href="{{ site.social_links.mastodon }}">
+        {% endif %}
     </head>
 
     <body>
