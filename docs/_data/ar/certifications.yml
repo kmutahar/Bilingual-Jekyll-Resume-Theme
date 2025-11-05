@@ -1,0 +1,73 @@
+# الشهادات والتراخيص
+# الملف: _data/ar/certifications.yml
+# الشهادات والتراخيص المهنية
+
+# كل إدخال يمثل شهادة أو ترخيص
+- name: ""                    # مطلوب: اسم الشهادة
+  active: true                # مطلوب: اضبط على true للعرض في السيرة الذاتية، false للإخفاء
+  issuing_organization: ""    # مطلوب: المنظمة التي أصدرت الشهادة
+  credential_id: ""          # اختياري: رقم اعتماد/شهادة (اتركه فارغاً إذا لم يكن هناك)
+  credential_url: ""          # اختياري: رابط للتحقق من الاعتماد (اتركه فارغاً إذا لم يكن هناك)
+  issue_date:                 # مطلوب: تاريخ الإصدار (تنسيق YYYY-MM-DD، مثلاً 2024-03-15)
+  expiration:                 # اختياري: تاريخ الانتهاء (تنسيق YYYY-MM-DD، اتركه فارغاً إذا لم يكن هناك تاريخ انتهاء)
+  courses:                    # اختياري: للاستخدام الداخلي فقط - لا يتم عرضه في السيرة الذاتية
+                              # هذه الدورات المتداخلة هي للاحتفاظ بالسجلات الشخصية فقط
+                              # تربط الدورات بشهادتها الأصلية ولكن لا يتم عرضها أبداً
+    - name: ""               # اسم الدورة (للسجلات الشخصية فقط)
+      active: false           # حالة النشاط (للسجلات الشخصية فقط)
+      issuing_organization: "" # المنظمة (للسجلات الشخصية فقط)
+      credential_id: ""       # رقم الاعتماد (للسجلات الشخصية فقط)
+      credential_url: ""      # رابط الاعتماد (للسجلات الشخصية فقط)
+      issue_date:             # تاريخ الإصدار (تنسيق YYYY-MM-DD، للسجلات الشخصية فقط)
+      expiration:             # تاريخ الانتهاء (تنسيق YYYY-MM-DD، اتركه فارغاً إذا لم يكن هناك، للسجلات الشخصية فقط)
+
+# مثال مع رقم اعتماد ورابط
+- name: ""
+  active: true
+  issuing_organization: ""
+  credential_id: ""
+  credential_url: "https://example.com/cert/123"
+  issue_date:
+  expiration:
+  courses:
+    - name: ""
+      active: false
+      issuing_organization: ""
+      credential_id: ""
+      credential_url: ""
+      issue_date:
+      expiration:
+
+# مثال مع رقم اعتماد بدون رابط
+- name: ""
+  active: true
+  issuing_organization: ""
+  credential_id: ""
+  credential_url: ""
+  issue_date:
+  expiration:
+  courses:
+    - name: ""
+      active: false
+      issuing_organization: ""
+      credential_id: ""
+      credential_url: ""
+      issue_date:
+      expiration:
+
+# مثال بدون تاريخ انتهاء
+- name: ""
+  active: true
+  issuing_organization: ""
+  credential_id: ""
+  credential_url: ""
+  issue_date:
+  expiration:
+  courses:
+    - name: ""
+      active: false
+      issuing_organization: ""
+      credential_id: ""
+      credential_url: ""
+      issue_date:
+      expiration:

@@ -1,0 +1,50 @@
+# Experience
+# File: _data/experience.yml
+# Professional work experience and employment history
+
+# Jobs are grouped by company name. Multiple roles at the same company will be displayed together.
+# Roles are sorted by startdate (most recent first).
+
+# OPTION 1: Using startdate and enddate (recommended for continuous employment)
+# Each entry represents a role/position
+- company: ""         # Required: Company/organization name
+  position: ""        # Required: Job title/position
+  startdate:          # Required: Start date (YYYY-MM-DD format, e.g., 2018-05-01)
+  enddate:            # Optional: End date (YYYY-MM-DD format) or "Present" for current roles
+  location: ""        # Optional: Job location (e.g., "New York, NY" or "Remote")
+  active: true        # Required: Set to false to hide this entry
+  notes: ""           # Optional: Personal notes (not displayed on resume)
+  summary: ""         # Optional: Job description (only shown if enable_summary is true in _config.yml)
+
+# Example of current position
+- company: ""
+  position: ""
+  startdate:
+  enddate: Present    # Use "Present" for ongoing positions
+  location: ""
+  active: true
+  notes: ""
+  summary: ""
+
+# OPTION 2: Using durations (alternative for non-continuous periods at same company)
+# Use this instead of startdate/enddate when you have multiple separate time periods
+- company: ""
+  position: ""
+  durations:          # Alternative: Use this instead of startdate/enddate for non-continuous periods
+    - duration: ""    # Display text for first period (e.g., "Jun 2020 &mdash; Jan 2021")
+    - duration: ""    # Display text for second period (e.g., "&amp; Jun 2022 &mdash; Dec 2022")
+                      # Use &amp; for ampersand (&) and &mdash; for em dash (—)
+  location: ""
+  active: true
+  notes: ""
+  summary: ""
+
+# Example with multiple roles at same company (will be grouped together)
+- company: ""
+  position: ""
+  startdate:
+  enddate:
+  location: ""
+  active: true
+  notes: ""
+  summary: ""

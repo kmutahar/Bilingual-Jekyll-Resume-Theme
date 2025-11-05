@@ -1,0 +1,29 @@
+# Languages
+# File: _data/languages.yml
+# Language proficiencies
+
+# Languages section displays in a two-column table
+# If lang_header is enabled in _config.yml, languages appear in the page header instead
+# Each entry represents a language proficiency
+
+- language: ""         # Required: Language name (e.g., "English", "Arabic", "Spanish")
+  active: true         # Required: Set to false to hide this entry
+  description: ""      # Required: Full proficiency description (e.g., "Native proficiency", "Professional working proficiency")
+  descrp_short: ""     # Required: Short form for header display (e.g., "Native", "Professional", "Limited", "Elementary")
+
+# Suggested proficiency levels:
+# - Native / Bilingual
+# - Professional working proficiency
+# - Limited working proficiency
+# - Elementary proficiency
+
+# Example entries
+- language: ""
+  active: true
+  description: ""
+  descrp_short: ""
+
+- language: ""
+  active: true
+  description: ""
+  descrp_short: ""

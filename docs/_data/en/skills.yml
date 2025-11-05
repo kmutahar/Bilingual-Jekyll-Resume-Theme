@@ -1,0 +1,17 @@
+# Skills
+# File: _data/skills.yml
+# Professional skills and competencies
+
+# Each entry represents a skill
+- skill: ""          # Required: Skill name/title (e.g., "Full-Stack Web Development", "Machine Learning")
+  active: true       # Required: Set to false to hide this entry
+  description: ""    # Required: Detailed description of the skill
+
+# Example entries
+- skill: ""
+  active: true
+  description: ""
+
+- skill: ""
+  active: true
+  description: ""

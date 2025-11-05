@@ -1,0 +1,39 @@
+# Courses
+# File: _data/courses.yml
+# Training courses, workshops, or educational programs
+
+# Each entry represents a course or training program
+- name: ""                    # Required: Course name
+  active: true                # Required: Set to false to hide this entry
+  issuing_organization: ""    # Required: Organization providing the course
+  credential_id: ""          # Optional: Credential/certificate ID (leave empty if none)
+  credential_url: ""          # Optional: URL to verify credential (leave empty if none)
+  startdate:                  # Required: Course start date (YYYY-MM-DD format, e.g., 2024-09-01)
+  enddate:                    # Optional: Course end date (YYYY-MM-DD format, leave empty if ongoing)
+  expiration:                 # Optional: Credential expiration date (YYYY-MM-DD format, leave empty if none)
+  notes: ""                   # Optional: Personal notes (not displayed on resume)
+  summary: ""                 # Optional: Course description (only shown if enable_summary is true in _config.yml)
+
+# Example with credential
+- name: ""
+  active: true
+  issuing_organization: ""
+  credential_id: ""
+  credential_url: "https://example.com/verify/certificate"
+  startdate:
+  enddate:
+  expiration:
+  notes: ""
+  summary: ""
+
+# Example without credential
+- name: ""
+  active: true
+  issuing_organization: ""
+  credential_id: ""
+  credential_url: ""
+  startdate:
+  enddate:
+  expiration:
+  notes: ""
+  summary: ""

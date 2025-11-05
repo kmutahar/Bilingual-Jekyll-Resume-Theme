@@ -1,0 +1,73 @@
+# Certifications
+# File: _data/certifications.yml
+# Professional certifications and licenses
+
+# Each entry represents a certification or license
+- name: ""                    # Required: Certification name
+  active: true                # Required: Set to true to display on resume, false to hide
+  issuing_organization: ""    # Required: Organization that issued the certification
+  credential_id: ""          # Optional: Credential/certificate ID number (leave empty if none)
+  credential_url: ""          # Optional: URL to verify credential (leave empty if none)
+  issue_date:                 # Required: Date issued (YYYY-MM-DD format, e.g., 2024-03-15)
+  expiration:                 # Optional: Expiration date (YYYY-MM-DD format, leave empty if no expiration)
+  courses:                    # Optional: INTERNAL USE ONLY - not displayed on resume
+                              # These nested courses are for personal record-keeping only
+                              # They link courses to their parent certification but are never shown
+    - name: ""               # Course name (for personal records only)
+      active: false           # Active status (for personal records only)
+      issuing_organization: "" # Organization (for personal records only)
+      credential_id: ""       # Credential ID (for personal records only)
+      credential_url: ""      # Credential URL (for personal records only)
+      issue_date:             # Issue date (YYYY-MM-DD format, for personal records only)
+      expiration:             # Expiration date (YYYY-MM-DD format, leave empty if none, for personal records only)
+
+# Example with credential ID and URL
+- name: ""
+  active: true
+  issuing_organization: ""
+  credential_id: ""
+  credential_url: "https://example.com/cert/123"
+  issue_date:
+  expiration:
+  courses:
+    - name: ""
+      active: false
+      issuing_organization: ""
+      credential_id: ""
+      credential_url: ""
+      issue_date:
+      expiration:
+
+# Example with credential ID but no URL
+- name: ""
+  active: true
+  issuing_organization: ""
+  credential_id: ""
+  credential_url: ""
+  issue_date:
+  expiration:
+  courses:
+    - name: ""
+      active: false
+      issuing_organization: ""
+      credential_id: ""
+      credential_url: ""
+      issue_date:
+      expiration:
+
+# Example without expiration date
+- name: ""
+  active: true
+  issuing_organization: ""
+  credential_id: ""
+  credential_url: ""
+  issue_date:
+  expiration:
+  courses:
+    - name: ""
+      active: false
+      issuing_organization: ""
+      credential_id: ""
+      credential_url: ""
+      issue_date:
+      expiration:

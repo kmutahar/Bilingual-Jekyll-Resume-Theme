@@ -1,0 +1,39 @@
+# الدورات
+# الملف: _data/ar/courses.yml
+# دورات تدريبية وورش عمل أو برامج تعليمية
+
+# كل إدخال يمثل دورة أو برنامج تدريبي
+- name: ""                    # مطلوب: اسم الدورة
+  active: true                # مطلوب: اضبط على false لإخفاء هذا الإدخال
+  issuing_organization: ""    # مطلوب: المنظمة المقدمة للدورة
+  credential_id: ""          # اختياري: رقم اعتماد/شهادة (اتركه فارغاً إذا لم يكن هناك)
+  credential_url: ""          # اختياري: رابط للتحقق من الاعتماد (اتركه فارغاً إذا لم يكن هناك)
+  startdate:                  # مطلوب: تاريخ بداية الدورة (تنسيق YYYY-MM-DD، مثلاً 2024-09-01)
+  enddate:                    # اختياري: تاريخ نهاية الدورة (تنسيق YYYY-MM-DD، اتركه فارغاً إذا كانت مستمرة)
+  expiration:                 # اختياري: تاريخ انتهاء الاعتماد (تنسيق YYYY-MM-DD، اتركه فارغاً إذا لم يكن هناك)
+  notes: ""                   # اختياري: ملاحظات شخصية (لا يتم عرضها في السيرة الذاتية)
+  summary: ""                 # اختياري: وصف الدورة (يُعرض فقط إذا كان enable_summary صحيحاً في _config.yml)
+
+# مثال مع اعتماد
+- name: ""
+  active: true
+  issuing_organization: ""
+  credential_id: ""
+  credential_url: "https://example.com/verify/certificate"
+  startdate:
+  enddate:
+  expiration:
+  notes: ""
+  summary: ""
+
+# مثال بدون اعتماد
+- name: ""
+  active: true
+  issuing_organization: ""
+  credential_id: ""
+  credential_url: ""
+  startdate:
+  enddate:
+  expiration:
+  notes: ""
+  summary: ""

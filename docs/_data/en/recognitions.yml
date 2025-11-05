@@ -1,0 +1,23 @@
+# Recognitions
+# File: _data/recognitions.yml
+# Awards, honors, and recognition
+
+# Each entry represents an award or recognition
+- award: ""          # Required: Award name (e.g., "Outstanding Achievement", "Employee of the Quarter")
+  active: true       # Required: Set to false to hide this entry
+  organization: ""   # Required: Awarding organization (e.g., "Company Name" or "University Name")
+  year: ""           # Required: Year(s) received (can be multiple, e.g., "2010, 2014" or "Q2 2023, Q4 2023" or "2019, 2020, 2021, 2022")
+  summary: ""        # Required: Award description
+
+# Example entries
+- award: ""
+  active: true
+  organization: ""
+  year: ""
+  summary: ""
+
+- award: ""
+  active: true
+  organization: ""
+  year: ""
+  summary: ""

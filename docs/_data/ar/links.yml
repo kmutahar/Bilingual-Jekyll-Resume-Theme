@@ -1,0 +1,17 @@
+# الروابط
+# الملف: _data/ar/links.yml
+# روابط إضافية (معرض أعمال، مدونة، GitHub، إلخ)
+
+# كل إدخال يمثل رابط
+- description: ""  # مطلوب: وصف/عنوان الرابط (مثلاً "المعرض الشخصي"، "ملف GitHub"، "مدونة شخصية")
+  active: true      # مطلوب: اضبط على false لإخفاء هذا الرابط
+  url: ""           # مطلوب: الرابط (مثلاً "https://github.com/username" أو "https://example.com")
+
+# أمثلة إدخالات
+- description: ""
+  active: true
+  url: ""
+
+- description: ""
+  active: true
+  url: ""

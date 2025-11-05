@@ -1,0 +1,28 @@
+# Projects
+# File: _data/projects.yml
+# Personal or professional projects
+
+# Each entry represents a project
+- project: ""        # Required: Project name
+  active: true       # Required: Set to false to hide this entry
+  role: ""           # Required: Your role in the project (e.g., "Lead Developer", "Team Lead", "Maintainer")
+  duration: ""       # Required: Time period (as display text, e.g., "May 2021 &mdash; Present" or "Jan 2023 &mdash; Jun 2024")
+                     # Use &mdash; for em dash (—)
+  url: ""            # Optional: Project URL (leave empty if no URL, e.g., GitHub repository or project website)
+  description: ""    # Required: Project description
+
+# Example with URL
+- project: ""
+  active: true
+  role: ""
+  duration: ""
+  url: "https://github.com/username/project"
+  description: ""
+
+# Example without URL
+- project: ""
+  active: true
+  role: ""
+  duration: ""
+  url: ""
+  description: ""

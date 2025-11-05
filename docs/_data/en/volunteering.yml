@@ -1,0 +1,39 @@
+# Volunteering
+# File: _data/volunteering.yml
+# Volunteer work and community service
+
+# Structure is identical to Experience section. Volunteer positions are grouped by organization.
+# Roles are sorted by startdate (most recent first).
+
+# OPTION 1: Using startdate and enddate (recommended for continuous volunteer work)
+- company: ""        # Required: Organization name
+  position: ""       # Required: Role/position title
+  startdate:         # Required: Start date (YYYY-MM-DD format, e.g., 2011-11-01)
+  enddate:           # Optional: End date (YYYY-MM-DD format) or "Present" for current roles
+  location: ""       # Optional: Location (e.g., "Springfield, IL" or "Remote")
+  active: true       # Required: Set to true to display, false to hide
+  notes: ""          # Optional: Personal notes (not displayed on resume)
+  summary: ""         # Optional: Description of volunteer work (only shown if enable_summary is true in _config.yml)
+
+# Example of current volunteer position
+- company: ""
+  position: ""
+  startdate:
+  enddate: Present   # Use "Present" for ongoing volunteer work
+  location: ""
+  active: true
+  notes: ""
+  summary: ""
+
+# OPTION 2: Using durations (alternative for non-continuous periods at same organization)
+# Use this instead of startdate/enddate when you have multiple separate time periods
+- company: ""
+  position: ""
+  durations:         # Alternative: Use this instead of startdate/enddate for non-continuous periods
+    - duration: ""   # Display text for first period (e.g., "Summer 2022")
+    - duration: ""   # Display text for second period (e.g., "&amp; Winter 2021")
+                     # Use &amp; for ampersand (&) and &mdash; for em dash (—)
+  location: ""
+  active: true
+  notes: ""
+  summary: ""

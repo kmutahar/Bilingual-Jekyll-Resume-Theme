@@ -1,0 +1,17 @@
+# Links
+# File: _data/links.yml
+# Additional links (portfolio, blog, GitHub, etc.)
+
+# Each entry represents a link
+- description: ""  # Required: Link description/title (e.g., "Portfolio", "GitHub Profile", "Personal Blog")
+  active: true      # Required: Set to false to hide this link
+  url: ""           # Required: URL (e.g., "https://github.com/username" or "https://example.com")
+
+# Example entries
+- description: ""
+  active: true
+  url: ""
+
+- description: ""
+  active: true
+  url: ""
