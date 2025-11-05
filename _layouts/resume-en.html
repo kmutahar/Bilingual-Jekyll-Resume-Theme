@@ -235,9 +235,11 @@ resume_data.experience == site.data['2025-06']['20250621-PM'].experience
                     {% endif %}
                 </div>
 
+                {% if site.resume_header_intro_en == true %}
                 <div class="executive-summary" itemprop="description">
-                    {{ site.resume_header_intro }}
+                    <p>{{ resume_data.header.intro }}</p>
                 </div>
+                {% endif %}
 
                 {% if site.resume_looking_for_work == true %}
                     <a href="mailto:{{ site.contact_info.email }}" class="contact-button no-print" itemprop="email">Contact me</a>

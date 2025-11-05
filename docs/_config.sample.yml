@@ -72,7 +72,8 @@ active_resume_path_ar: "ar" # ath to Arabic data (empty = root _data/)
 # Header and intro
 resume_avatar: true # Show profile picture
 display_header_contact_info: true # Show contact info in header
-resume_header_intro: "<p>Your professional summary or elevator pitch goes here.</p>"
+resume_header_intro_en: true # Show English intro paragraph below name/title in header
+resume_header_intro_ar: false # Show Arabic intro paragraph below name/title in header
 
 # Job search status
 # use "true" to display the email contact button,
