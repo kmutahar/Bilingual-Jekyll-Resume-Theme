@@ -285,7 +285,9 @@
                     {% endif %}
 
                     <h4 class="resume-item-details" itemprop="description">{{ association.role }} &bull; {{ association.year }}</h4>
-                    <p class="resume-item-copy">{{ association.summary }}</p>
+                    {% if association.summary %}
+                        <p class="resume-item-copy">{{ association.summary }}</p>
+                    {% endif %}
                 </div>
             {% endif %}
         {% endfor %}
