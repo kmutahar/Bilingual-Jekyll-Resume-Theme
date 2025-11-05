@@ -232,7 +232,9 @@
             {% if skill.active == true %}
                 <div class="resume-item">
                     <h4 class="resume-item-details">{{ skill.skill }}</h4>
-                    <p class="resume-item-copy">{{ skill.description }}</p>
+                    {% if skill.description %}
+                        <p class="resume-item-copy">{{ skill.description }}</p>
+                    {% endif %}
                 </div>
             {% endif %}
         {% endfor %}
