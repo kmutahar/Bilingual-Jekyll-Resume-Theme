@@ -13,7 +13,7 @@ A comprehensive, contributor-friendly overview of `_layouts/` in this theme: wha
   - [resume-en.html](#3-_layoutsresume-enhtml)
   - [resume-ar.html](#4-_layoutsresume-arhtml)
 - [Resume data loading (the `resume_data` object)](#resume-data-loading-the-resume_data-object)
-  - [Configuring `active_resume_path`](#configuring-active_resume_path)
+  - [Configuring `active_resume_path_en` and `active_resume_path_ar`](#configuring-active_resume_path_en-and-active_resume_path_ar)
   - [Dot-path traversal and bracket-notation](#dot-path-traversal-and-bracket-notation)
   - [Examples](#examples)
 - [Rendering flow inside resume layouts](#rendering-flow-inside-resume-layouts)
@@ -32,6 +32,8 @@ A comprehensive, contributor-friendly overview of `_layouts/` in this theme: wha
 ## What are Jekyll layouts?
 
 Layouts wrap pages. A page chooses a layout via its front matter (e.g., `layout: resume-en`). The layout defines the overall HTML structure and where page content or reusable includes appear. This theme ships with specialized layouts for the resume (EN/AR) and a general-purpose base layout.
+
+**For beginners:** If you're new to Jekyll, think of layouts as templates that define the structure of your pages. You create a page file (like `resume-en.md`) and tell it which layout to use. The layout then handles all the HTML structure, styling, and includes the content from your data files.
 
 ---
 
@@ -88,21 +90,26 @@ Purpose: Arabic (RTL) resume layout. It mirrors `resume-en.html` with language-a
 
 Both resume layouts compute a single variable, `resume_data`, which points to the active subtree under `_data/`. This allows switching datasets without touching templates.
 
-### Configuring `active_resume_path`
+### Configuring `active_resume_path_en` and `active_resume_path_ar`
 
-Set a site-level key in `_config.yml`:
+Set site-level keys in `_config.yml`:
 
 ```yaml
-# Choose which subtree of _data/ to use for the resume
+# Choose which subtree of _data/ to use for each language
 # Examples below in the next section
-active_resume_path: ""
+active_resume_path_en: "en"  # Path for English resume
+active_resume_path_ar: "ar"  # Path for Arabic resume
 ```
 
-- If `active_resume_path` is empty or nil → `resume_data = site.data`
-- If `active_resume_path` is a single key (e.g., `en`) → `resume_data = site.data.en`
-- If `active_resume_path` is a dotted path (e.g., `2025-06.20250621-PM`) → the layout walks down each segment safely
+- If set to a single key (e.g., `"en"`) → `resume_data = site.data.en` (**recommended for beginners**)
+- If set to a dotted path (e.g., `"2025-06.20250621-PM"`) → the layout walks down each segment safely (advanced)
+- If `active_resume_path_en` or `active_resume_path_ar` is empty or nil → `resume_data = site.data` (uses root `_data/`, **advanced users only**)
 
-Note: The layouts read `site.active_resume_path`. If you maintain multiple variants (time-boxed, roles, locales) under `_data/`, this switch lets you pick the current one at build time.
+**Important:** The English layout (`resume-en.html`) reads `site.active_resume_path_en`, and the Arabic layout (`resume-ar.html`) reads `site.active_resume_path_ar`. This allows you to use different data folders for each language.
+
+**Recommended approach (for beginners):** Always use `"en"` and `"ar"` to place files in `_data/en/` and `_data/ar/` folders. This is the recommended approach even if you're only using one language, as it keeps your data organized and makes it easy to add more languages later.
+
+**Advanced users:** If you maintain multiple variants (time-boxed, roles, locales) under `_data/`, you can use nested paths or root paths, but this is not recommended for beginners.
 
 ### Dot-path traversal and bracket-notation
 
@@ -115,17 +122,23 @@ Implementation highlights inside the layouts:
 ### Examples
 
 ```yaml
-# 1) Use files directly under _data/
-active_resume_path: ""
-# resume_data.experience == site.data.experience
+# 1) Recommended: Use language subtrees (recommended for beginners)
+active_resume_path_en: "en"
+active_resume_path_ar: "ar"
+# EN: resume_data.experience == site.data.en.experience
+# AR: resume_data.experience == site.data.ar.experience
+# This is the recommended approach even if you're only using one language
 
-# 2) Use a language subtree
-active_resume_path: en
-# resume_data.experience == site.data.en.experience
-
-# 3) Use nested subtrees for versioning
-active_resume_path: 2025-06.20250621-PM
+# 2) Advanced: Use nested subtrees for versioning
+active_resume_path_en: "2025-06.20250621-PM"
+active_resume_path_ar: "2025-06.20250621-PM"
 # resume_data.experience == site.data['2025-06']['20250621-PM'].experience
+
+# 3) Advanced: Use files directly under _data/ (not recommended for beginners)
+active_resume_path_en: ""
+active_resume_path_ar: ""
+# resume_data.experience == site.data.experience
+# Only use this if you place files directly in _data/ root (advanced users only)
 ```
 
 ---
@@ -146,7 +159,7 @@ active_resume_path: 2025-06.20250621-PM
   - Small inline icons are included from `vendors/lineicons-v4.0/`
 - Title bar with `site.resume_title` (or `resume_title_ar` for AR)
 - Social icon list when `site.social_links` is configured (see `_includes/social-links.html`)
-- Executive summary from `site.resume_header_intro`
+- Executive summary (controlled by `resume_header_intro_en`/`resume_header_intro_ar` flags, reads from `resume_data.header.intro`)
 - CTA button controlled by `site.resume_looking_for_work`
 
 ### 3) Dynamic section rendering
@@ -180,7 +193,8 @@ name:
   last: "Last"
 resume_title: "Job Title"
 resume_title_ar: "المسمّى الوظيفي"
-resume_header_intro: "Short executive summary paragraph."
+resume_header_intro_en: true  # Enable English intro (reads from resume_data.header.intro)
+resume_header_intro_ar: true  # Enable Arabic intro (reads from resume_data.header.intro)
 resume_avatar: true
 
 # Header contact toggles
@@ -236,8 +250,9 @@ resume_section_order:
 # Print behavior
 resume_print_social_links: true
 
-# Active data subtree for resume_data
-active_resume_path: ""
+# Active data subtree for resume_data (separate for each language)
+active_resume_path_en: "en"
+active_resume_path_ar: "ar"
 ```
 
 Per-page front matter (for multilingual SEO):
@@ -304,8 +319,8 @@ Tip: Keep date formatting and “present” text consistent with the target lang
 ## Common pitfalls and troubleshooting
 
 - Sections not rendering? Check `resume_section_order`, `resume_section.<name>` flags, and `active: true` on data items.
-- Wrong data showing? Confirm `active_resume_path` and your `_data/` structure.
-- Arabic months not displayed? Ensure `site.data.ar.months` is defined (see includes guide: `ar-date.html`).
+- Wrong data showing? Confirm `active_resume_path_en`/`active_resume_path_ar` and your `_data/` structure.
+- Arabic months not displayed? The theme includes `_data/ar/months.yml` by default. If you're using a custom data path, ensure `site.data.ar.months` is accessible (see includes guide: `ar-date.html`).
 - Icons missing? Verify the SVG exists under `/_includes/vendors/lineicons-*/` and the include path is correct.
 - SEO alternates missing? Ensure both pages share the same `t_id`, and each has a `lang` value.
 

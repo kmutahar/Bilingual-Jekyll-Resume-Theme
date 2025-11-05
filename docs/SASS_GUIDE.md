@@ -1,6 +1,8 @@
 # SCSS/SASS Guide (_sass)
 
-A contributor- and user-friendly tour of the theme’s styling system: how styles are organized, how entrypoints compile, what each partial does, and safe ways to customize or extend.
+A contributor- and user-friendly tour of the theme's styling system: how styles are organized, how entrypoints compile, what each partial does, and safe ways to customize or extend.
+
+**For beginners:** This guide explains how the theme's CSS/SCSS works. If you're new to CSS or just want to change colors/fonts, start with the [Customization recipes](#customization-recipes) section. You can override styles without modifying the theme files directly.
 
 ---
 

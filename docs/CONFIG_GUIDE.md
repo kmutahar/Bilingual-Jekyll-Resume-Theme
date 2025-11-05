@@ -24,6 +24,8 @@ Make your site render correctly with this theme. This guide matches the shipped 
 
 ## Quick start
 
+**For beginners:** This guide explains every setting in `_config.yml`. Start with the basics below, then add more sections as you need them. You can find sample configuration files in `docs/_data/_config.sample.yml` and sample data files in `docs/_data/en/` and `docs/_data/ar/`.
+
 Copy, paste, and customize the ALL-CAPS values:
 
 ```yaml
@@ -89,30 +91,39 @@ That’s enough to render a working resume using data from `_data/`.
 
 The layouts read resume data from a subtree of `_data/` using dot-separated paths.
 
-- active_resume_path_en: Path for English pages.
-- active_resume_path_ar: Path for Arabic pages.
-- If the value is an empty string (`""`) or not set, the root of `_data/` is used.
+**Recommended approach (for beginners):** Use language-specific folders. Set `active_resume_path_en: "en"` and `active_resume_path_ar: "ar"` to use `_data/en/` and `_data/ar/` folders. This is the recommended approach even if you're only using one language, as it keeps your data organized and makes it easy to add more languages later.
+
+**Advanced approach:** If you place files directly in `_data/` (root), set `active_resume_path_en: ""` and `active_resume_path_ar: ""`. This approach is not recommended for beginners.
+
+- active_resume_path_en: Path for English pages (recommended: `"en"` for `_data/en/`).
+- active_resume_path_ar: Path for Arabic pages (recommended: `"ar"` for `_data/ar/`).
+- If the value is an empty string (`""`) or not set, the root of `_data/` is used (advanced users only).
 
 Examples:
 
 ```yaml
-active_resume_path_en: "en"          # -> uses _data/en/*
-active_resume_path_ar: "ar"          # -> uses _data/ar/*
-# Nested example:
+# Recommended: Use language-specific folders
+active_resume_path_en: "en"          # -> uses _data/en/* (recommended for beginners)
+active_resume_path_ar: "ar"          # -> uses _data/ar/* (recommended for beginners)
+
+# Advanced: Nested example for versioning
 active_resume_path_en: "2025-06.PM"   # -> uses _data/2025-06/PM/*
-# Root example (use files directly under _data/ not suggested unless using one language only):
+
+# Advanced: Root example (not recommended for beginners)
+# Only use this if you place files directly under _data/ (not in language folders)
 active_resume_path_en: ""
 active_resume_path_ar: ""
 ```
 
-Note: This theme uses the two keys above (there is no single `active_resume_path`).
+**Note:** This theme uses the two keys above (there is no single `active_resume_path`). For beginners, always use `"en"` and `"ar"` to keep your data organized in language folders.
 
 ---
 
 ## Header and contact
 
 - resume_avatar (bool): Show/hide avatar in the header.
-- resume_header_intro (HTML string): Short paragraph under your header; basic HTML supported.
+- resume_header_intro_en (bool): Enable/disable the English intro paragraph below name/title. When enabled, reads from `resume_data.header.intro` (create `_data/en/header.yml` with an `intro:` field). **Recommended:** Use `_data/en/header.yml` for English.
+- resume_header_intro_ar (bool): Enable/disable the Arabic intro paragraph below name/title. When enabled, reads from `resume_data.header.intro` (create `_data/ar/header.yml` with an `intro:` field). **Recommended:** Use `_data/ar/header.yml` for Arabic.
 - resume_looking_for_work (bool | omitted):
   - true → Shows “Contact me” button using `contact_info.email`.
   - false → Shows a neutral “I’m not looking for work” pill.
@@ -146,8 +157,9 @@ Helpful toggles:
 
 - resume_title_ar: Arabic job title for the Arabic layout.
 - address_ar: Arabic address line for the Arabic header contact row.
-- Arabic dates: `_includes/ar-date.html` expects `site.data.ar.months` to map 1–12 to Arabic month names (define in `_data/ar.yml` or `_data/ar/months.yml`).
-- Present text: English shows “Present”; Arabic shows “حتى الآن”.
+- Arabic dates: `_includes/ar-date.html` expects `site.data.ar.months` to map 1–12 to Arabic month names. **The theme already includes `_data/ar/months.yml`, so you don't need to create this file manually.**
+- Present text: English shows "Present"; Arabic shows "حتى الآن".
+- Header intro: To add an intro paragraph below your name/title, create `_data/en/header.yml` for English (or `_data/ar/header.yml` for Arabic) with an `intro:` field containing your text. Then enable `resume_header_intro_en: true` or `resume_header_intro_ar: true` in `_config.yml`. **Recommended:** Always use language-specific folders (`_data/en/` and `_data/ar/`). Sample files are available in `docs/_data/en/header.yml` and `docs/_data/ar/header.yml`.
 
 ---
 
@@ -228,7 +240,8 @@ contact_info:
 
 display_header_contact_info: true
 resume_avatar: true
-resume_header_intro: "<p>Building products customers love through clear strategy and measurable outcomes.</p>"
+resume_header_intro_en: true  # Enable English intro (reads from resume_data.header.intro)
+resume_header_intro_ar: true  # Enable Arabic intro (reads from resume_data.header.intro)
 resume_looking_for_work: true
 
 # Data paths
@@ -316,6 +329,8 @@ exclude:
 - Contact button shows but nothing happens.
   - Set `contact_info.email` or set `resume_looking_for_work: false`.
 - Arabic months appear as numbers.
-  - Define Arabic month names under `site.data.ar.months` (e.g., `_data/ar/months.yml`).
+  - The theme includes `_data/ar/months.yml` by default. If you're using a custom data path, ensure `site.data.ar.months` is accessible.
+- Header intro not showing.
+  - Enable `resume_header_intro_en: true` or `resume_header_intro_ar: true` in `_config.yml`, and create `_data/en/header.yml` (or `_data/ar/header.yml` for Arabic) in your active data path with an `intro:` field. You can copy sample files from `docs/_data/en/header.yml` and `docs/_data/ar/header.yml`.
 - Data for EN/AR lives in different folders.
   - Point `active_resume_path_en` and `active_resume_path_ar` at the right subtrees (e.g., `en` and `ar`).

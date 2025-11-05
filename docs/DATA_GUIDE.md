@@ -2,6 +2,14 @@
 
 This document explains all data file structures used by the bilingual Jekyll resume theme. Each section of your resume is stored in a separate YAML file in the `_data/` directory.
 
+**For beginners:** All your resume content (experience, education, skills, etc.) goes in YAML files in the `_data/` folder. 
+
+**Recommended approach:** Use language-specific folders (`_data/en/` for English and `_data/ar/` for Arabic). This is the recommended approach even if you're only using one language, as it makes it easier to add more languages in the future and keeps your data organized. 
+
+**Advanced users:** If you prefer, you can place files directly in `_data/` (root), but you'll need to set `active_resume_path_en: ""` and `active_resume_path_ar: ""` in your `_config.yml`.
+
+You can copy sample files from `docs/_data/en/` and `docs/_data/ar/` to get started. The theme reads these files and displays them on your resume pages.
+
 Key Features:
 
 1. Complete coverage of all 12 data types with commented YAML examples
@@ -40,13 +48,16 @@ Highlights:
 10. [Languages](#languages)
 11. [Links](#links)
 12. [Interests](#interests)
-13. [General Guidlines](#general-guidelines)
+13. [Header Intro](#header-intro)
+14. [General Guidlines](#general-guidelines)
 
 ---
 
 ## Experience
 
-**File:** `_data/experience.yml`
+**File:** `_data/en/experience.yml` (English) or `_data/ar/experience.yml` (Arabic)
+
+**Recommended:** Use `_data/en/experience.yml` for English and `_data/ar/experience.yml` for Arabic. This keeps your data organized and makes it easy to add more languages later.
 
 Jobs are grouped by company name. Multiple roles at the same company will be displayed together. Roles are sorted by `startdate` (most recent first).
 
@@ -93,7 +104,9 @@ Jobs are grouped by company name. Multiple roles at the same company will be dis
 
 ## Education
 
-**File:** `_data/education.yml`
+**File:** `_data/en/education.yml` (English) or `_data/ar/education.yml` (Arabic)
+
+**Recommended:** Use `_data/en/education.yml` for English and `_data/ar/education.yml` for Arabic.
 
 ```yaml
 - degree: "Bachelor of Business"  # Required: Degree name and details
@@ -125,7 +138,9 @@ Jobs are grouped by company name. Multiple roles at the same company will be dis
 
 ## Certifications
 
-**File:** `_data/certifications.yml`
+**File:** `_data/en/certifications.yml` (English) or `_data/ar/certifications.yml` (Arabic)
+
+**Recommended:** Use `_data/en/certifications.yml` for English and `_data/ar/certifications.yml` for Arabic.
 
 ```yaml
 - name: "Business Certificate"        # Required: Certification name
@@ -165,7 +180,9 @@ Jobs are grouped by company name. Multiple roles at the same company will be dis
 
 ## Courses
 
-**File:** `_data/courses.yml`
+**File:** `_data/en/courses.yml` (English) or `_data/ar/courses.yml` (Arabic)
+
+**Recommended:** Use `_data/en/courses.yml` for English and `_data/ar/courses.yml` for Arabic.
 
 ```yaml
 - name: "Certificate of Course Completion"  # Required: Course name
@@ -200,7 +217,9 @@ Jobs are grouped by company name. Multiple roles at the same company will be dis
 
 ## Volunteering
 
-**File:** `_data/volunteering.yml`
+**File:** `_data/en/volunteering.yml` (English) or `_data/ar/volunteering.yml` (Arabic)
+
+**Recommended:** Use `_data/en/volunteering.yml` for English and `_data/ar/volunteering.yml` for Arabic.
 
 Structure is identical to Experience section. Volunteer positions are grouped by organization.
 
@@ -232,7 +251,9 @@ Same as Experience section - grouped by organization, sorted by date.
 
 ## Projects
 
-**File:** `_data/projects.yml`
+**File:** `_data/en/projects.yml` (English) or `_data/ar/projects.yml` (Arabic)
+
+**Recommended:** Use `_data/en/projects.yml` for English and `_data/ar/projects.yml` for Arabic.
 
 ```yaml
 - project: "Closed Source Project"                        # Required: Project name
@@ -269,7 +290,9 @@ Same as Experience section - grouped by organization, sorted by date.
 
 ## Skills
 
-**File:** `_data/skills.yml`
+**File:** `_data/en/skills.yml` (English) or `_data/ar/skills.yml` (Arabic)
+
+**Recommended:** Use `_data/en/skills.yml` for English and `_data/ar/skills.yml` for Arabic.
 
 ```yaml
 - skill: "Organizational leadership"           # Required: Skill name/title
@@ -298,7 +321,9 @@ Same as Experience section - grouped by organization, sorted by date.
 
 ## Recognition
 
-**File:** `_data/recognitions.yml`
+**File:** `_data/en/recognitions.yml` (English) or `_data/ar/recognitions.yml` (Arabic)
+
+**Recommended:** Use `_data/en/recognitions.yml` for English and `_data/ar/recognitions.yml` for Arabic.
 
 ```yaml
 - award: "Outstanding Achievement"             # Required: Award name
@@ -331,7 +356,9 @@ Same as Experience section - grouped by organization, sorted by date.
 
 ## Associations
 
-**File:** `_data/associations.yml`
+**File:** `_data/en/associations.yml` (English) or `_data/ar/associations.yml` (Arabic)
+
+**Recommended:** Use `_data/en/associations.yml` for English and `_data/ar/associations.yml` for Arabic.
 
 ```yaml
 - organization: "Internet Sociaity"  # Required: Organization name
@@ -368,7 +395,9 @@ Same as Experience section - grouped by organization, sorted by date.
 
 ## Languages
 
-**File:** `_data/languages.yml`
+**File:** `_data/en/languages.yml` (English) or `_data/ar/languages.yml` (Arabic)
+
+**Recommended:** Use `_data/en/languages.yml` for English and `_data/ar/languages.yml` for Arabic.
 
 ```yaml
 - language: English                            # Required: Language name
@@ -408,7 +437,9 @@ Same as Experience section - grouped by organization, sorted by date.
 
 ## Links
 
-**File:** `_data/links.yml`
+**File:** `_data/en/links.yml` (English) or `_data/ar/links.yml` (Arabic)
+
+**Recommended:** Use `_data/en/links.yml` for English and `_data/ar/links.yml` for Arabic.
 
 ```yaml
 - description: "Resume"       # Required: Link description/title
@@ -441,7 +472,9 @@ Same as Experience section - grouped by organization, sorted by date.
 
 ## Interests
 
-**File:** `_data/interests.yml`
+**File:** `_data/en/interests.yml` (English) or `_data/ar/interests.yml` (Arabic)
+
+**Recommended:** Use `_data/en/interests.yml` for English and `_data/ar/interests.yml` for Arabic.
 
 Simple list of interests/hobbies.
 
@@ -463,6 +496,33 @@ Simple list of interests/hobbies.
 
 ---
 
+## Header Intro
+
+**File:** `_data/en/header.yml` (English) or `_data/ar/header.yml` (Arabic)
+
+**Recommended:** Use `_data/en/header.yml` for English and `_data/ar/header.yml` for Arabic.
+
+Contains the executive summary/intro paragraph that appears below your name and title in the resume header.
+
+```yaml
+# Header intro paragraph
+# Enable this in _config.yml with: resume_header_intro_en: true (for English)
+# or resume_header_intro_ar: true (for Arabic)
+
+intro: "Your professional summary or elevator pitch goes here. This is the English version."
+```
+
+**Display Format:**
+- Appears as a paragraph below your name, title, and social links
+- Only shows if `resume_header_intro_en: true` (English) or `resume_header_intro_ar: true` (Arabic) is set in `_config.yml`
+- Supports basic HTML formatting
+
+**Important:** 
+- Create separate files for each language: `_data/en/header.yml` for English and `_data/ar/header.yml` for Arabic
+- Sample files are available in `docs/_data/en/header.yml` and `docs/_data/ar/header.yml`
+
+---
+
 ## General Guidelines
 
 ### Date Formats
@@ -470,7 +530,8 @@ Simple list of interests/hobbies.
 **For startdate/enddate fields:**
 - Always use ISO format: `YYYY-MM-DD` (e.g., `2024-03-15`)
 - These auto-format to "Mon YYYY" in English (e.g., "Mar 2024")
-- Arabic layout uses custom date formatting
+- Arabic layout uses custom date formatting via `ar-date.html` which reads from `site.data.ar.months`
+- **Note:** The theme already includes `_data/ar/months.yml` with Arabic month names, so you don't need to create this file manually.
 
 **For display text fields (year, duration):**
 - Use any text format you want
@@ -506,22 +567,40 @@ url: https://example.com
 
 ### File Location
 
-All data files go in the `_data/` directory or a subdirectory based on the `_config.yml`:
+**Recommended approach (for beginners):** Place all data files in language-specific folders (`_data/en/` and `_data/ar/`). This is the recommended approach even if you're only using one language, as it:
+- Keeps your data organized
+- Makes it easy to add more languages in the future
+- Follows the same structure as the sample files
+
+**Advanced approach:** You can place files directly in `_data/` (root), but you'll need to set `active_resume_path_en: ""` and `active_resume_path_ar: ""` in your `_config.yml`. This approach is not recommended for beginners.
+
+**Recommended structure (use language folders):**
 ```
 _data/
-├── experience.yml
-├── education.yml
-├── certifications.yml
-├── courses.yml
-├── volunteering.yml
-├── projects.yml
-├── skills.yml
-├── recognitions.yml
-├── associations.yml
-├── languages.yml
-├── links.yml
-└── interests.yml
+├── en/
+│   ├── header.yml        # Executive summary/intro paragraph
+│   ├── experience.yml
+│   ├── education.yml
+│   ├── certifications.yml
+│   ├── courses.yml
+│   ├── volunteering.yml
+│   ├── projects.yml
+│   ├── skills.yml
+│   ├── recognitions.yml
+│   ├── associations.yml
+│   ├── languages.yml
+│   ├── links.yml
+│   └── interests.yml
+└── ar/
+    ├── header.yml        # Executive summary/intro paragraph (Arabic)
+    ├── experience.yml
+    ├── education.yml
+    └── ... (same files as en/)
 ```
+
+**Note:** The theme includes `_data/ar/months.yml` in the theme itself (not in your site), so Arabic month names are available automatically. You don't need to create this file in your site's `_data/` folder.
+
+**Sample files:** You can copy sample data files from `docs/_data/en/` and `docs/_data/ar/` to get started. These contain commented examples showing the structure for each section type.
 
 ### Enabling Sections in _config.yml
 

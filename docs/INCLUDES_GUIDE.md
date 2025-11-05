@@ -52,6 +52,8 @@ In this theme, includes are used for:
 - Social icons
 - Fine-grained rendering of resume sections in English and Arabic
 
+**For beginners:** Includes are like small reusable code snippets. Instead of copying the same HTML code in multiple places, you put it in an include file and reference it. The theme uses includes to organize code into logical pieces (like the header, social links, analytics, etc.).
+
 ---
 
 ## How includes fit into this theme
@@ -79,14 +81,17 @@ Typical include usage inside layouts:
 
 ### Data flow and configuration
 
-The resume layouts compute a `resume_data` object that points to the active data subtree in `_data/`, based on `active_resume_path` configured in your site’s `_config.yml`. This lets you organize multiple datasets (e.g., different roles/versions) and switch without editing templates.
+The resume layouts compute a `resume_data` object that points to the active data subtree in `_data/`, based on `active_resume_path_en` (for English) and `active_resume_path_ar` (for Arabic) configured in your site's `_config.yml`. This lets you organize multiple datasets (e.g., different roles/versions) and switch without editing templates.
 
 Examples:
 - No path (empty or nil): `resume_data == site.data`
-- `active_resume_path: en`: `resume_data == site.data.en`
-- Nested path with dots: `active_resume_path: 2025-06.20250621-PM` → `resume_data == site.data['2025-06']['20250621-PM']`
+- `active_resume_path_en: "en"`: `resume_data == site.data.en` (English layout)
+- `active_resume_path_ar: "ar"`: `resume_data == site.data.ar` (Arabic layout)
+- Nested path with dots: `active_resume_path_en: "2025-06.20250621-PM"` → `resume_data == site.data['2025-06']['20250621-PM']`
 
-Most resume includes read from `resume_data.<section>` (e.g., `experience`, `skills`, `languages`). Feature flags and ordering live in `_config.yml` (see “Dynamic section rendering” below).
+Most resume includes read from `resume_data.<section>` (e.g., `experience`, `skills`, `languages`). Feature flags and ordering live in `_config.yml` (see "Dynamic section rendering" below).
+
+**For beginners:** The `resume_data` object is like a pointer to your data files. **Recommended:** Set `active_resume_path_en: "en"` and `active_resume_path_ar: "ar"` to use language-specific folders. This way, the theme will look for your data in `_data/en/experience.yml`, `_data/en/education.yml`, etc. for English, and `_data/ar/experience.yml`, etc. for Arabic. This keeps your English and Arabic data separate and organized, and is the recommended approach even if you're only using one language.
 
 ---
 
@@ -196,7 +201,9 @@ Usage in templates:
   - `style`: `MDY` → “Month Day, Year”; anything else → “Month Year”
 - Looks up the Arabic month name via `site.data.ar.months[m]`.
 
-Data requirement in your `_data/` (one of these structures):
+Data requirement: The theme includes `_data/ar/months.yml` by default, so you don't need to create this file manually. The months are already defined in the theme.
+
+If you're using a custom data path structure, you can define months in one of these ways:
 ```yaml
 # Option A: _data/ar.yml
 months:
@@ -215,11 +222,13 @@ months:
 ```
 or
 ```yaml
-# Option B: _data/ar/months.yml
+# Option B: _data/ar/months.yml (already included in theme)
 "1": يناير
 "2": فبراير
 # ...
 ```
+
+**Note:** Since the theme already includes `_data/ar/months.yml`, you typically don't need to add this file unless you're using a completely custom data structure.
 
 ---
 
@@ -319,7 +328,7 @@ The layout loops this array and includes the matching block.
 
 Example: Add “publications”.
 
-1) Data: create `_data/publications.yml` (or inside your active subtree) like:
+1) Data: create `_data/en/publications.yml` (or `_data/ar/publications.yml` for Arabic, or inside your active subtree) like:
 ```yaml
 - active: true
   title: Building Scalable Systems
@@ -474,7 +483,7 @@ To add a network not yet supported (e.g., Mastodon):
 - Respect configuration-driven behavior:
   - Feature flags under `resume_section.*`
   - Section order via `resume_section_order`
-  - Data path via `active_resume_path`
+  - Data path via `active_resume_path_en` and `active_resume_path_ar`
 - Localize: if you add a section in EN, consider adding the AR counterpart with translated labels and RTL visual checks.
 - SVG hygiene: strip unnecessary attributes/metadata; keep icons lightweight.
 - Printing: if something is important for PDF/print, add a print-only variant similar to `print-social-links.html`.
