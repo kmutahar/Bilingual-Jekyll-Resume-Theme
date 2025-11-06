@@ -4,6 +4,33 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+## [0.5.0] - 2025-11-06
+
+### Added
+* Add sample configuration file for bilingual Jekyll resume theme ([`ce25360`](https://github.com/kmutahar/bilingual-jekyll-resume-theme/commit/ce25360b10bcc8bd1a26e4d3b3abb20a9f0d4e04))
+
+* Add conditional Mastodon link for social verification ([`5bb7f62`](https://github.com/kmutahar/bilingual-jekyll-resume-theme/commit/5bb7f62586871c904df10003fe17f5f9fce9fce4))
+
+* Add default Arabic months i18n files ([`1c3cac6`](https://github.com/kmutahar/bilingual-jekyll-resume-theme/commit/1c3cac6c4f0179f0447c746d6d950c3addc33907))
+
+
+### Changed
+* Add project overview for bilingual Jekyll resume theme ([`6708f50`](https://github.com/kmutahar/bilingual-jekyll-resume-theme/commit/6708f50bc84a6dd62fb7f77e5ed7797d7a97bd08))
+
+* Revise README for bilingual Jekyll resume theme ([`7efff88`](https://github.com/kmutahar/bilingual-jekyll-resume-theme/commit/7efff88b81d48aa9fac5d70cd4501e05f888e1db))
+
+* Update configuration and data guides for bilingual resume theme ([`9c0f9e9`](https://github.com/kmutahar/bilingual-jekyll-resume-theme/commit/9c0f9e9c20633970ffeb795cc6bd581caf7a4e62))
+
+* Add Arabic and English resume data samples ([`a86a668`](https://github.com/kmutahar/bilingual-jekyll-resume-theme/commit/a86a6680bb1384bc58053b502157aa0ae568a039))
+
+* Enhance ar-date include with detailed comments and usage instructions ([`5f297d1`](https://github.com/kmutahar/bilingual-jekyll-resume-theme/commit/5f297d1f2184b24e7feef8257a8bd9d73295d321))
+
+* Update bilingual-jekyll-resume-theme.gemspec ([`ca84a88`](https://github.com/kmutahar/bilingual-jekyll-resume-theme/commit/ca84a886bcdb7d8a41c1ed60dffd477207db9739))
+
+* Rename CODE_OF_CONDUCT.MD to CODE_OF_CONDUCT.md ([`127813b`](https://github.com/kmutahar/bilingual-jekyll-resume-theme/commit/127813b4f6acb867dff576977b899d1b46d20241))
+
+* Use ar-date include for Date of Birth ([`0b2ec85`](https://github.com/kmutahar/bilingual-jekyll-resume-theme/commit/0b2ec854638e9ceaefddc5b87f6a855cdeb0b596))
+
 ## [0.4.0] - 2025-11-05
 
 ### Added
@@ -98,6 +125,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 * Initial commit (New Theme Template) ([`00af662`](https://github.com/kmutahar/bilingual-jekyll-resume-theme/commit/00af6628dfec7aefe0ef7d7083bf98c9713a5ffd))
 
+[0.5.0]: https://github.com/kmutahar/bilingual-jekyll-resume-theme/compare/v0.4.0...v0.5.0
 [0.4.0]: https://github.com/kmutahar/bilingual-jekyll-resume-theme/compare/v0.3.1...v0.4.0
 [0.3.1]: https://github.com/kmutahar/bilingual-jekyll-resume-theme/compare/v0.3.0...v0.3.1
 [0.3.0]: https://github.com/kmutahar/bilingual-jekyll-resume-theme/compare/v0.2.0...v0.3.0
