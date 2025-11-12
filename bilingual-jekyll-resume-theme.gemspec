@@ -21,7 +21,7 @@ Gem::Specification.new do |spec|
     "allowed_push_host" => "https://rubygems.org" # Security lock to prevent pushing to wrong host
   }
 
-  spec.files         = `git ls-files -z`.split("\x0").select { |f| f.match(%r!^(assets|_data|_layouts|_includes|_sass|LICENSE|README|CHANGELOG|CODE_OF_CONDUCT|docs)!i) }
+  spec.files         = `git ls-files -z`.split("\x0").select { |f| f.match(%r!^(assets|_data|_layouts|_includes|_sass|_plugins|lib|LICENSE|README|CHANGELOG|CODE_OF_CONDUCT|docs)!i) }
 
   # --- A helpful message shown to users after installation ---
   spec.post_install_message = <<~MSG
@@ -30,6 +30,12 @@ Gem::Specification.new do |spec|
     
     To get started, check the setup instructions:
     https://github.com/kmutahar/bilingual-jekyll-resume-theme#readme
+    
+    New in this version:
+    ✓ Resume data validation (automatic during build)
+    ✓ Standalone validator: ruby lib/resume-validator.rb --data-dir _data
+    
+    See docs/VALIDATION_GUIDE.md for details
     --------------------------------------------------
   MSG
 

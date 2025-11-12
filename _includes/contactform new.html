@@ -1,0 +1,273 @@
+{% comment %}
+  This file *provides* the modal and the logic 
+  to attach to the #contactBtn in your layout.
+{% endcomment %}
+
+{% comment %}
+  --- Check which contact method is active ---
+  We set a variable 'active_form' to know what to do.
+{% endcomment %}
+{% assign active_form = "none" %}
+{% if site.contact_form.enabled == true and site.contact_form.formcarry and site.contact_form.formcarry != "" %}
+  {% assign active_form = "formcarry" %}
+{% elsif site.contact_form.enabled == true and site.contact_form.formspree and site.contact_form.formspree != "" %}
+  {% assign active_form = "formspree" %}
+{% elsif site.contact_form.enabled == true and site.contact_form.web3forms and site.contact_form.web3forms != "" %}
+  {% assign active_form = "web3forms" %}
+{% else %}
+  {% assign active_form = "email" %}
+{% endif %}
+
+
+{% comment %} 
+  --- Render the Modal (if a form is active) --- 
+  This modal is hidden by default. The JS will show it.
+  If the active_form is "email", this <dialog> will be empty 
+  and won't be used.
+{% endcomment %}
+<dialog id="contactModal">
+  <style>
+    /* Basic styles for the modal */
+    #contactModal {
+      border: none;
+      border-radius: 8px;
+      padding: 0;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      max-width: 500px;
+      width: 90%;
+      margin: auto; /* Center on screen */
+    }
+    #contactModal[open] {
+      display: block;
+    }
+    #contactModal::backdrop {
+      background: rgba(0, 0, 0, 0.5);
+    }
+    .modal-content {
+      padding: 1.5rem 2rem 2rem 2rem;
+    }
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem 0 2rem;
+    }
+    .modal-header h3 {
+      margin: 0;
+    }
+    #closeModalBtn {
+      background: none;
+      border: none;
+      font-size: 2rem;
+      font-weight: bold;
+      cursor: pointer;
+      line-height: 1;
+      padding: 0;
+      color: #777;
+    }
+    #closeModalBtn:hover {
+      color: #000;
+    }
+
+    /* Simple form styling */
+    .contact-form .form-group {
+      margin-bottom: 1rem;
+    }
+    .contact-form label {
+      display: block;
+      margin-bottom: 0.25rem;
+      font-weight: 500;
+    }
+    .contact-form input[type="text"],
+    .contact-form input[type="email"],
+    .contact-form textarea {
+      width: 100%;
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box; /* Important for padding */
+    }
+    .contact-button {
+      /* Add your button styles here */
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .contact-button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+
+  {% comment %} --- Set default English text --- {% endcomment %}
+  {% assign title = include.form_title | default: "Contact Me" %}
+  {% assign name_label = include.name_label | default: "Your Name" %}
+  {% assign email_label = include.email_label | default: "Your Email" %}
+  {% assign message_label = include.message_label | default: "Your Message" %}
+  {% assign submit_text = include.submit_text | default: "Send Message" %}
+
+  <div class="modal-header">
+    <h3>{{ title }}</h3>
+    <button id="closeModalBtn" class="close-btn" aria-label="Close">&times;</button>
+  </div>
+  
+  <div class="modal-content">
+    {% comment %} --- Form Logic --- {% endcomment %}
+    {% if active_form == "formcarry" %}
+      <!-- ==== 1. FORMCARRY ==== -->
+      <form action="https://formcarry.com/s/{{ site.contact_form.formcarry }}" method="POST" class="contact-form">
+        <div class="form-group">
+          <label for="name">{{ name_label }}</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">{{ email_label }}</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="message">{{ message_label }}</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+        <button type="submit" class="contact-button">{{ submit_text }}</button>
+      </form>
+    
+    {% elsif active_form == "formspree" %}
+      <!-- ==== 2. FORMSPREE ==== -->
+      <form action="https://formspree.io/f/{{ site.contact_form.formspree }}" method="POST" class="contact-form">
+        <div class="form-group">
+          <label for="name">{{ name_label }}</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">{{ email_label }}</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="message">{{ message_label }}</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+        <button type="submit" class="contact-button">{{ submit_text }}</button>
+      </form>
+      <!-- <script src=".../formspree.js"></script> -->
+
+    {% elsif active_form == "web3forms" %}
+      <!-- ==== 3. WEB3FORMS ==== -->
+      <form action="https://api.web3forms.com/submit" method="POST" class="contact-form">
+        <input type="hidden" name="apikey" value="{{ site.contact_form.web3forms }}">
+        <div class="form-group">
+          <label for="name">{{ name_label }}</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">{{ email_label }}</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="message">{{ message_label }}</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+        <button type="submit" class="contact-button">{{ submit_text }}</button>
+      </form>
+      <!-- <script src="https://www.google.com/recaptcha/api.js" async defer></script> -->
+    
+    {% endif %}
+  </div>
+</dialog>
+
+
+{% comment %} 
+  --- ATTACHMENT SCRIPT ---
+  This script runs on page load and gives the #contactBtn
+  in your layout the correct behavior and text.
+{% endcomment %}
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Find the button in your layout
+    const contactBtn = document.getElementById('contactBtn');
+    if (!contactBtn) {
+      console.warn('Contact script loaded, but no #contactBtn was found.');
+      return;
+    }
+
+    // Get variables from Liquid
+    const activeForm = '{{ active_form }}';
+    const emailFallback = 'mailto:{{ site.contact_info.email }}';
+    // Get the translated text from the include parameters
+    const contactMeText = '{{ include.contact_me_text | default: "Contact Me" }}';
+
+    if (activeForm === 'email') {
+      // --- FALLBACK: EMAIL ---
+      // The button should be a mailto link.
+      // We replace the <button> with an <a> tag.
+      const mailtoLink = document.createElement('a');
+      mailtoLink.href = emailFallback;
+      mailtoLink.className = contactBtn.className; // Copy classes
+      mailtoLink.itemprop = 'email';
+      mailtoLink.textContent = contactMeText; // Set translated text
+      
+      contactBtn.replaceWith(mailtoLink);
+      
+    } else if (activeForm !== 'none') {
+      // --- FORM PROVIDER IS ACTIVE ---
+      // The button should open the modal.
+      const contactModal = document.getElementById('contactModal');
+      const closeModalBtn = document.getElementById('closeModalBtn');
+
+      // Set translated text on the button
+      contactBtn.textContent = contactMeText;
+
+      if (contactModal && closeModalBtn) {
+        // Wire up the button to open the modal
+        contactBtn.addEventListener('click', (e) => {
+          e.preventDefault(); // Stop default button action
+          contactModal.showModal();
+        });
+
+        // Wire up the modal's close button
+        closeModalBtn.addEventListener('click', () => {
+          contactModal.close();
+        });
+
+        // Allow closing by clicking the background
+        contactModal.addEventListener('click', (e) => {
+          if (e.target === contactModal) {
+            contactModal.close();
+          }
+        });
+      }
+    }
+    // If active_form is 'none', the button is found
+    // but no provider is active. It will just sit there 
+    // and do nothing, which is correct.
+  });
+</script>
+```
+
+### How this works:
+
+1.  **In your layout:** You still have your button:
+    `<button id="contactBtn" class="your-button-class ...">Contact Me</button>`
+    (The "Contact Me" text will be replaced by the script).
+
+2.  **At the bottom of your layout (before `</body>`):** You call the include with the correct translation.
+
+    **For English pages:**
+    ```html
+    {% include contact-section.html
+      contact_me_text="Contact Me"
+      form_title="Get in Touch"
+      name_label="Your Name"
+      ...etc...
+    %}
+    ```
+    **For Arabic pages:**
+    ```html
+    {% include contact-section.html
+      contact_me_text="اتصل بي"
+      form_title="اتصل بنا"
+      name_label="اسمك"
+      ...etc...
+    %}
